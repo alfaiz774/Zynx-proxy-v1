@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Zynx Proxy Server</title>
+  <style>
+    body {
+      background: #000;
+      color: #00ffd5;
+      font-family: 'Courier New', monospace;
+      text-align: center;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 30px;
+      text-shadow: 0 0 10px #00ffd5;
+    }
+
+    button {
+      background: #00ffd5;
+      color: #000;
+      font-size: 18px;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 10px;
+      margin-top: 20px;
+      box-shadow: 0 0 15px #00ffd5;
+    }
+
+    #status, #reward, #launch-msg, #step1, #step2, #step3 {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+
+    #reward, #launch-msg, #ff-btn, #step1, #step2, #step3 {
+      display: none;
+    }
+
+    #reward {
+      animation: blink 1s infinite;
+      color: #00ff99;
+    }
+
+    #launch-msg {
+      color: #00ffd5;
+      animation: glow 2s infinite;
+    }
+
+    #ff-btn {
+      margin-top: 30px;
+      background: #ffb300;
+      color: black;
+      font-weight: bold;
+    }
+
+    @keyframes blink {
+      0% { opacity: 1; }
+      50% { opacity: 0.3; }
+      100% { opacity: 1; }
+    }
+
+    @keyframes glow {
+      0% { text-shadow: 0 0 5px #00ffd5; }
+      50% { text-shadow: 0 0 15px #00ffd5; }
+      100% { text-shadow: 0 0 5px #00ffd5; }
+    }
+  </style>
+</head>
+<body>
+
+<h1>🛡 Zynx Proxy Server</h1>
+<p>Activate your Free Fire proxy and unlock all items!</p>
+
+<button onclick="startProxy()">Start Proxy</button>
+
+<div id="status">Proxy Status: ❌ Not Connected</div>
+
+<div id="step1">🔄 Connecting to Proxy...</div>
+<div id="step2">🔐 Connection Secure!</div>
+<div id="step3">✨ Unlocking Items...</div>
+
+<div id="reward">🎁 Discount Applied! +9999 💎 Diamonds Unlocked</div>
+<div id="launch-msg">🚀 Launching Free Fire... Unlocked items activated!</div>
+<button id="ff-btn" onclick="openFF()">🎮 Open Free Fire</button>
+
+<!-- 🔊 Voice -->
+<audio id="voice" src="https://cdn.pixabay.com/audio/2022/03/15/audio_c86cd54857.mp3"></audio>
+
+<script>
+  function startProxy() {
+    document.getElementById("voice").play();
+
+    // Step 1
+    document.getElementById("status").innerText = "Proxy Status: 🔄 Connecting...";
+    document.getElementById("step1").style.display = "block";
+
+    setTimeout(() => {
+      // Step 2
+      document.getElementById("status").innerText = "Proxy Status: 🔐 Connection Secure!";
+      document.getElementById("step1").style.display = "none";
+      document.getElementById("step2").style.display = "block";
+    }, 2000);
+
+    setTimeout(() => {
+      // Step 3
+      document.getElementById("step2").style.display = "none";
+      document.getElementById("step3").style.display = "block";
+    }, 4000);
+
+    setTimeout(() => {
+      // Diamonds and Unlocks
+      document.getElementById("step3").style.display = "none";
+      document.getElementById("reward").style.display = "block";
+    }, 6000);
+
+    setTimeout(() => {
+      // Final Launch
+      document.getElementById("launch-msg").style.display = "block";
+      document.getElementById("ff-btn").style.display = "inline-block";
+      document.getElementById("status").innerText = "✅ Proxy Connected Successfully!";
+      document.getElementById("status").style.color = "#00ff00";
+    }, 8000);
+  }
+
+  function openFF() {
+    window.location.href = "intent://#Intent;package=com.dts.freefireth;end;";
+  }
+</script>
+
+</body>
+</html>
